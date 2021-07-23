@@ -1,0 +1,285 @@
+<!--
+*
+*  INSPINIA - Responsive Admin Theme
+*  version 2.7
+*
+-->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Optimizador dimensionamiento</title>
+    <style>
+      .currSign:before {
+          content: '$';
+      }
+    </style>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+
+    <!-- Toastr style -->
+    <link href="css/plugins/toastr/toastr.min.css" rel="stylesheet">
+
+    <!-- Gritter -->
+    <link href="js/plugins/gritter/jquery.gritter.css" rel="stylesheet">
+
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <div id="wrapper">
+        <nav class="navbar-default navbar-static-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav metismenu" id="side-menu">
+                    <li class="nav-header">
+                        <div class="dropdown profile-element"> <span>
+                            <span>
+                                <img width="150" height="60" src="https://www.prime-alliance.org/wp-content/uploads/2020/11/IBM-LOGO.png" />
+                                 </span>
+                            
+                        </div>
+                        <div class="logo-element">
+                            <img width="60" height="24" src="https://www.prime-alliance.org/wp-content/uploads/2020/11/IBM-LOGO.png" />
+                        </div>
+                    </li>
+                    <li class>
+                        <a href="index.html"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Cloud Paks</span> <span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a href="https://ui.9sxuen7c9q9.us-south.codeengine.appdomain.cloud/cp4d">Cloud Pak for Data</a></li>
+                            <li><a href="https://pxbackup.9sxuen7c9q9.us-south.codeengine.appdomain.cloud/">Respaldos IKS/Openshift con PX-Backup</a></li>
+                            <li><a href="https://ui-monitoring.9sxuen7c9q9.us-south.codeengine.appdomain.cloud/VATLA">Monitoreo Logs (Log Analysis/Activity Tracker)</a></li>
+                            <li><a href="https://ui-monitoring.9sxuen7c9q9.us-south.codeengine.appdomain.cloud/VLG?">Monitoreo Salud (Monitoring)</a></li>
+                            <li><a href="https://ui-ga.9sxuen7c9q9.us-south.codeengine.appdomain.cloud/uiga">Comunicaciones con Gateway Appliance</a></li>
+                            <li><a href="https://ui-ga.9sxuen7c9q9.us-south.codeengine.appdomain.cloud/uidl">Comunicaciones con Direct Link</a></li>
+                            <li><a href="/tdt.html">Comunicaciones con Tasa de Transferencia</a></li>
+                        </ul>
+                    </li>
+                    <li class>
+                        <a href="#"><i class="fa fa-th-large"></i> <span class="nav-label">Orquestadores</span> <span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a href="https://iks-ocp.9sxuen7c9q9.us-south.codeengine.appdomain.cloud/iks">Kubernetes Service (IKS)</a></li>
+                            <li><a href="https://iks-ocp.9sxuen7c9q9.us-south.codeengine.appdomain.cloud/ocp">Openshift Kubernetes Service (ROKS)</a></li>
+                            <li><a href="https://ui-cr.9sxuen7c9q9.us-south.codeengine.appdomain.cloud/">Container Registry</a></li>
+                        </ul>
+                    </li>
+                    
+                    
+                    </li>
+                    
+
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="gray-bg dashbard-1">
+        <div class="row border-bottom">
+        <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header">
+            <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
+            
+            </form>
+        </div>
+            <ul class="nav navbar-top-links navbar-right">
+                
+
+        </nav>
+        </div>
+        <div class="row wrapper wrapper-content animated fadeInRight">
+            <div class="row wrapper border-bottom white-bg page-heading">
+                    <div class="col-lg-12 text-center">
+                        <h2>Dimensionamiento Orquestadores de Contenedores</h2>
+                        
+                    </div>
+                    <div class="col-lg-2">
+    
+                    </div>
+                </div>
+        <br>
+        <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5> Calculo de tasas de transferencia</h5>
+        </div>
+    <form id="VAT" name="" method="post">
+      
+      <table class="table table-stripped">
+              <thead>
+                <tr>
+                  <th>Parámetro</th>
+                  <th>Valor</th>
+                </tr>
+              </thead>
+              <tr>
+                <td>Unidades de datos</td>
+                          <td>
+                            <select name="" id="unid" required="">
+                              <option value="1">bit (b/s)</option>
+                              <option value="0">byte (B/s)</option>
+                              <option value="2">kilobyte (KB/s)</option>
+                              <option value="3">Megabyte (MB/s)</option>
+                              <option value="4">Gigabyte (GB/s)</option>
+                              <option value="5">Terabyte (TB/s)</option>
+                            
+                            
+                            </select>
+                          </td>
+     
+                  <td>Datos</td>
+                  <td>
+                    <label><input type="number" id="datos" name="" step="any" required="" autofocus placeholder="Datos">
+                  </label></td>
+                  <tr>
+                    <td>Unidades del tiempo</td>
+                    <td>
+                      <select name="" id="unit" required="">
+                        <option value="0">segundos (s)</option>
+                        <option value="1">minutos (min)</option>
+                        <option value="2">horas (hrs)</option>
+                      </select>
+                    </td>
+                    <td>Tiempo</td>
+                    <td>
+                      <label><input type="number" id="tiempo" name="" step="any" required="" autofocus placeholder="Tiempo">
+                    </label></td>
+                   
+                <td>
+                <button type="button" onclick="Calc();" align="right" class="btn btn-outline btn-primary">Calcular</button>
+                </tb>  
+                </tr>
+              <tbody>
+           
+        </div>
+        <div class="ibox-content">
+          <table class="table table-stripped">
+            <thead>
+              <tr>
+            <th>Tasa de transferencia</th>
+              </tr>
+            </thead>
+           
+        <tbody>
+            <tr>
+            <td><label id="total"></id></td>
+            <td><label id="dtotal"></td>   
+            <td><label id="htotal"></td>
+            </tr>
+    </table>
+        </form>
+    <script>
+    function Calc(){
+var unidadd;
+         var datos = parseInt(document.getElementById('datos').value);
+         var tiempo = parseInt(document.getElementById('tiempo').value);
+         var unid = document.getElementById('unid').value;
+         var unit = document.getElementById('unit').value;
+         if (isNaN(datos)) {
+    datos=0;
+  } else {
+    datos=datos; 
+  }
+   if (isNaN(tiempo)) {
+    tiempo=0;
+  } else {
+    tiempo=tiempo; 
+  }
+  if (unid==0){
+unidadd='B/s';
+  }
+if (unid==1){
+      unidadd='b/s';
+  }
+
+  if (unid==2){
+    unidadd='KB/s'
+    }
+
+    if (unid==3){
+        unidadd='MB/s'
+    }
+
+    if (unid==4){
+        unidadd='GB/s'
+    }
+    if (unid==5){
+        unidadd='TB/s'
+    }
+  if(unit==0){
+tiempo=tiempo;
+  }
+  if(unit==1){
+tiempo=tiempo*60;
+}
+if(unit==2){
+tiempo=tiempo*360;
+}
+  var ctotal= datos/tiempo;
+  if (isNaN(ctotal)) {
+    ctotal=0;
+  } else {
+    ctotal=ctotal;}
+         document.getElementById('total').innerHTML=ctotal + " " + unidadd;
+         }
+    </script>
+    </body>
+    </html>
+  <!-- Javascript code to format the
+           number as per the locale -->
+      <script>
+          let x = document.querySelectorAll(".myDIV");
+          for (let i = 0, len = x.length; i < len; i++) {
+              let num = Number(x[i].innerHTML)
+                        .toLocaleString('en');
+              x[i].innerHTML = num;
+              x[i].classList.add("currSign");
+          }
+      </script>
+    <!-- Mainly scripts -->
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+    <!-- Flot -->
+    <script src="js/plugins/flot/jquery.flot.js"></script>
+    <script src="js/plugins/flot/jquery.flot.tooltip.min.js"></script>
+    <script src="js/plugins/flot/jquery.flot.spline.js"></script>
+    <script src="js/plugins/flot/jquery.flot.resize.js"></script>
+    <script src="js/plugins/flot/jquery.flot.pie.js"></script>
+
+    <!-- Peity -->
+    <script src="js/plugins/peity/jquery.peity.min.js"></script>
+    <script src="js/demo/peity-demo.js"></script>
+
+    <!-- Custom and plugin javascript -->
+    <script src="js/inspinia.js"></script>
+    <script src="js/plugins/pace/pace.min.js"></script>
+
+    <!-- jQuery UI -->
+    <script src="js/plugins/jquery-ui/jquery-ui.min.js"></script>
+
+    <!-- GITTER -->
+    <script src="js/plugins/gritter/jquery.gritter.min.js"></script>
+
+    <!-- Sparkline -->
+    <script src="js/plugins/sparkline/jquery.sparkline.min.js"></script>
+
+    <!-- Sparkline demo data  -->
+    <script src="js/demo/sparkline-demo.js"></script>
+
+    <!-- ChartJS-->
+    <script src="js/plugins/chartJs/Chart.min.js"></script>
+
+    <!-- Toastr -->
+    <script src="js/plugins/toastr/toastr.min.js"></script>
+
+
+   
+</body>
+</html>
